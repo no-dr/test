@@ -1,0 +1,64 @@
+menu "ESP32CAM Configuration"
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) for the ESP32CAM to connect to.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2) for the ESP32CAM to use.
+
+    config SINGLE_CLIENT_MODE
+        bool "Single Client Mode"
+        default y
+        help
+            If enabled the ESP32CAM will reset when a client disconnects. This will allow the ESP32CAM recover if it crashes or has network issues.
+
+    config CAM_VERTICAL_FLIP
+        bool "Vertical flip"
+        default y
+        help
+            Vertically flip the camera image.
+
+    config CAM_HORIZONTAL_MIRROR
+        bool "Horizontal mirror"
+        default y
+        help
+            Horizontally mirrors the camera image.
+
+    config CAM_FRAMERATE
+        int "Frames per second"
+        default 4
+        help
+            Frames per second the camera should run at.
+
+    choice
+        prompt "Camera frame size"
+        default FRAMESIZE_VGA
+
+        config FRAMESIZE_QVGA
+            bool "QVGA (320x240)"
+
+        config FRAMESIZE_CIF
+            bool "CIF (400x296 subsampled)"
+
+        config FRAMESIZE_VGA
+            bool "VGA (640x480)"
+
+        config FRAMESIZE_SVGA
+            bool "SVGA (800x600 subsampled)"
+
+        config FRAMESIZE_XGA
+            bool "XGA (1024x768)"
+
+        config FRAMESIZE_SXGA
+            bool "SXGA (1280x1024)"
+
+        config FRAMESIZE_UXGA
+            bool "UXGA (1600x1200)"
+    endchoice
+endmenu
